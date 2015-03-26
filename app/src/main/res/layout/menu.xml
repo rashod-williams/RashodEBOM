@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<RelativeLayout
+    android:background="#FFFFFF"
+    android:fillViewport="true"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/linearLayout" android:padding="10dip"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/udcicon"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/textView"
+            android:textSize="32dp"
+            android:text="Univeristy of DC"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="10dip"
+        android:orientation="vertical"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="32sp"
+            android:text="People"
+            android:gravity="center"
+            android:layout_marginTop="10dip"/>
+
+        <ListView
+            android:background="#FFCC00"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/people_menu"
+            android:layout_marginTop="10dip"
+            android:divider="@android:color/white"
+            android:dividerHeight="10.0sp"
+            > </ListView>
+
+    </LinearLayout>
+
+</RelativeLayout>
