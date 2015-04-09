@@ -2,24 +2,29 @@ package ebom.testapp;
 
 
 
-        import android.os.Bundle;
-        import android.app.Activity;
-        import android.content.Intent;
-        import android.view.Menu;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.ExpandableListView;
-        import android.widget.ListView;
-        import android.widget.TextView;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
-        import java.util.ArrayList;
+import android.widget.ListView;
+import android.widget.TextView;
 
-        import people.AdminActivity;
-        import people.FacultyActivity;
 
-public class PeopleActivity extends Activity {
+
+
+import undergrad.undergradAdvising;
+import undergrad.undergradDescriptions;
+import undergrad.undergradListings;
+import undergrad.undergradOpenings;
+
+
+public class UndergradActivity extends Activity {
     TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +32,11 @@ public class PeopleActivity extends Activity {
         try {
             setContentView(R.layout.menu);
             TextView heading = (TextView) findViewById(R.id.header);
-            heading.setText("People");
+            heading.setText("Undergraduate");
             ListView mlistView = (ListView) findViewById(R.id.people_menu);
             mlistView.setAdapter(new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1,
-                    new String[] {"Administration", "Faculty"}));
+                    new String[]{"UG Advising Sheets", "UG Course Openings", "UG Course Listings", "UG Course Descriptions"}));
 
             mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view,
@@ -40,17 +45,25 @@ public class PeopleActivity extends Activity {
 
                     String sText = ((TextView) view).getText().toString();
                     Intent intent = null;
-                    if(sText.equals("Administration"))
+                    if (sText.equals("UG Advising Sheets"))
                         intent = new Intent(getBaseContext(),
-                                AdminActivity.class);
+                                undergradAdvising.class);
 
-                    if(sText.equals("Faculty"))
+                    if (sText.equals("UG Course Openings"))
                         intent = new Intent(getBaseContext(),
-                                FacultyActivity.class);
+                                undergradOpenings.class);
+
+                    if (sText.equals("UG Course Listings"))
+                        intent = new Intent(getBaseContext(),
+                                undergradListings.class);
+
+                    if (sText.equals("UG Course Descriptions"))
+                        intent = new Intent(getBaseContext(),
+                                undergradDescriptions.class);
 
                     //else if(sText.equals("Help")) ..........
 
-                    if(intent != null)
+                    if (intent != null)
                         startActivity(intent);
                 }
             });
@@ -67,5 +80,4 @@ public class PeopleActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
 }

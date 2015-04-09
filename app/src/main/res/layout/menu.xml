@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textSize="32sp"
-            android:text="People"
+            android:id="@+id/header"
             android:gravity="center"
             android:layout_marginTop="10dip"/>
 

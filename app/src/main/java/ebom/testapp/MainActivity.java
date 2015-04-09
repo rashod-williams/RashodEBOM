@@ -42,12 +42,12 @@ public class MainActivity extends Activity {
             ListView mlistView = (ListView) findViewById(R.id.main_menu);
             mlistView.setAdapter(new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1,
-                    new String[] {"People", "Undergraduate","Graduate", "About Us","Junk"}));
+                    new String[] {"People", "Undergraduate","Graduate", "About Us"}));
 
             mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
-                    // When clicked, show a toast with the TextView text Game, Help, Home
+
 
                     String sText = ((TextView) view).getText().toString();
                     Intent intent = null;
@@ -57,19 +57,17 @@ public class MainActivity extends Activity {
 
                     if(sText.equals("Undergraduate"))
                         intent = new Intent(getBaseContext(),
-                                PeopleActivity.class);
+                                UndergradActivity.class);
 
                     if(sText.equals("Graduate"))
                         intent = new Intent(getBaseContext(),
-                                PeopleActivity.class);
+                                GraduateActivity.class);
 
                     if(sText.equals("About Us"))
                         intent = new Intent(getBaseContext(),
-                                PeopleActivity.class);
-                    if(sText.equals("Junk"))
-                        intent = new Intent(getBaseContext(),
-                                JunkActivity.class);
-                    //else if(sText.equals("Help")) ..........
+                                AboutActivity.class);
+
+
 
                     if(intent != null)
                         startActivity(intent);

@@ -2,24 +2,27 @@ package ebom.testapp;
 
 
 
-        import android.os.Bundle;
-        import android.app.Activity;
-        import android.content.Intent;
-        import android.view.Menu;
-        import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
-        import android.widget.ExpandableListView;
-        import android.widget.ListView;
-        import android.widget.TextView;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
-        import java.util.ArrayList;
+import android.widget.ListView;
+import android.widget.TextView;
 
-        import people.AdminActivity;
-        import people.FacultyActivity;
 
-public class PeopleActivity extends Activity {
+import aboutus.aboutAnnouncements;
+import aboutus.aboutContact;
+import aboutus.aboutMission;
+import aboutus.aboutNews;
+
+
+public class AboutActivity extends Activity {
     TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +30,11 @@ public class PeopleActivity extends Activity {
         try {
             setContentView(R.layout.menu);
             TextView heading = (TextView) findViewById(R.id.header);
-            heading.setText("People");
+            heading.setText("About");
             ListView mlistView = (ListView) findViewById(R.id.people_menu);
             mlistView.setAdapter(new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1,
-                    new String[] {"Administration", "Faculty"}));
+                    new String[]{"Mission", "Announcements", "News", "Contact Us"}));
 
             mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View view,
@@ -40,17 +43,25 @@ public class PeopleActivity extends Activity {
 
                     String sText = ((TextView) view).getText().toString();
                     Intent intent = null;
-                    if(sText.equals("Administration"))
+                    if (sText.equals("Mission"))
                         intent = new Intent(getBaseContext(),
-                                AdminActivity.class);
+                                aboutMission.class);
 
-                    if(sText.equals("Faculty"))
+                    if (sText.equals("Announcements"))
                         intent = new Intent(getBaseContext(),
-                                FacultyActivity.class);
+                                aboutAnnouncements.class);
+
+                    if (sText.equals("News"))
+                        intent = new Intent(getBaseContext(),
+                                aboutNews.class);
+
+                    if (sText.equals("Contact Us"))
+                        intent = new Intent(getBaseContext(),
+                                aboutContact.class);
 
                     //else if(sText.equals("Help")) ..........
 
-                    if(intent != null)
+                    if (intent != null)
                         startActivity(intent);
                 }
             });
@@ -67,5 +78,4 @@ public class PeopleActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
 }
