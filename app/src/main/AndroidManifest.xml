@@ -25,7 +25,7 @@
 
         <activity android:name="aboutus.aboutAnnouncements"></activity>
         <activity android:name="aboutus.aboutContact"></activity>
-        <activity android:name="aboutus.aboutMission"></activity>
+        <activity android:name=".aboutMission"></activity>
         <activity android:name="aboutus.aboutNews"></activity>
 
         <activity android:name="undergrad.undergradAdvising"></activity>

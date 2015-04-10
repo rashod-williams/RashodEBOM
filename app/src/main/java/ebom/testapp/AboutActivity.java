@@ -16,19 +16,26 @@ import android.widget.TextView;
 
 import aboutus.aboutAnnouncements;
 import aboutus.aboutContact;
-import aboutus.aboutMission;
 import aboutus.aboutNews;
 
 
-public class AboutActivity extends Activity {
+public class AboutActivity extends MainActivity {
     TextView textView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         try {
             setContentView(R.layout.menu);
+
+
+            //Id Array Creation
+            String[] idArray = {"Mission", "Announcements", "News", "Contact Us"};
+
+            //Send to hash
+            entFunct.create(idArray);
+
             TextView heading = (TextView) findViewById(R.id.header);
             heading.setText("About");
             ListView mlistView = (ListView) findViewById(R.id.people_menu);
@@ -43,22 +50,26 @@ public class AboutActivity extends Activity {
 
                     String sText = ((TextView) view).getText().toString();
                     Intent intent = null;
-                    if (sText.equals("Mission"))
+                    if (sText.equals("Mission")) {
+                        entFunct.click("Mission");
                         intent = new Intent(getBaseContext(),
                                 aboutMission.class);
-
-                    if (sText.equals("Announcements"))
+                    }
+                    if (sText.equals("Announcements")) {
+                        entFunct.click("Announcements");
                         intent = new Intent(getBaseContext(),
                                 aboutAnnouncements.class);
-
-                    if (sText.equals("News"))
+                    }
+                    if (sText.equals("News")) {
+                        entFunct.click("News");
                         intent = new Intent(getBaseContext(),
                                 aboutNews.class);
-
-                    if (sText.equals("Contact Us"))
+                    }
+                    if (sText.equals("Contact Us")) {
+                        entFunct.click("Contact Us");
                         intent = new Intent(getBaseContext(),
                                 aboutContact.class);
-
+                    }
                     //else if(sText.equals("Help")) ..........
 
                     if (intent != null)

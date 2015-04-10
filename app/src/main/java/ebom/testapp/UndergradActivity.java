@@ -22,15 +22,23 @@ import undergrad.undergradListings;
 import undergrad.undergradOpenings;
 
 
-public class UndergradActivity extends Activity {
+public class UndergradActivity extends MainActivity {
     TextView textView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         try {
             setContentView(R.layout.menu);
+
+
+            //Create Id Array
+            String[] idArray = {"UG Advising Sheets", "UG Course Openings", "UG Course Listings", "UG Course Descriptions"};
+
+            //Send to Hash
+            entFunct.create(idArray);
+
             TextView heading = (TextView) findViewById(R.id.header);
             heading.setText("Undergraduate");
             ListView mlistView = (ListView) findViewById(R.id.people_menu);
@@ -45,22 +53,26 @@ public class UndergradActivity extends Activity {
 
                     String sText = ((TextView) view).getText().toString();
                     Intent intent = null;
-                    if (sText.equals("UG Advising Sheets"))
+                    if (sText.equals("UG Advising Sheets")) {
+                        entFunct.click("UG Advising Sheets");
                         intent = new Intent(getBaseContext(),
                                 undergradAdvising.class);
-
-                    if (sText.equals("UG Course Openings"))
+                    }
+                    if (sText.equals("UG Course Openings")) {
+                        entFunct.click("UG Course Openings");
                         intent = new Intent(getBaseContext(),
                                 undergradOpenings.class);
-
-                    if (sText.equals("UG Course Listings"))
+                    }
+                    if (sText.equals("UG Course Listings")) {
+                        entFunct.click("UG Course Listings");
                         intent = new Intent(getBaseContext(),
                                 undergradListings.class);
-
-                    if (sText.equals("UG Course Descriptions"))
+                    }
+                    if (sText.equals("UG Course Descriptions")) {
+                        entFunct.click("UG Course Descriptions");
                         intent = new Intent(getBaseContext(),
                                 undergradDescriptions.class);
-
+                    }
                     //else if(sText.equals("Help")) ..........
 
                     if (intent != null)

@@ -18,14 +18,22 @@ package ebom.testapp;
         import people.AdminActivity;
         import people.FacultyActivity;
 
-public class PeopleActivity extends Activity {
+public class PeopleActivity extends MainActivity {
     TextView textView;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         try {
             setContentView(R.layout.menu);
+
+
+            //Create an id array
+            String[] idArray = {"Administration", "Faculty"};
+
+            //Send ids to the hash
+            entFunct.create(idArray);
+
             TextView heading = (TextView) findViewById(R.id.header);
             heading.setText("People");
             ListView mlistView = (ListView) findViewById(R.id.people_menu);
@@ -40,14 +48,16 @@ public class PeopleActivity extends Activity {
 
                     String sText = ((TextView) view).getText().toString();
                     Intent intent = null;
-                    if(sText.equals("Administration"))
+                    if(sText.equals("Administration")) {
+                        entFunct.click("Administration");
                         intent = new Intent(getBaseContext(),
                                 AdminActivity.class);
-
-                    if(sText.equals("Faculty"))
+                    }
+                    if(sText.equals("Faculty")) {
+                        entFunct.click("Faculty");
                         intent = new Intent(getBaseContext(),
                                 FacultyActivity.class);
-
+                    }
                     //else if(sText.equals("Help")) ..........
 
                     if(intent != null)

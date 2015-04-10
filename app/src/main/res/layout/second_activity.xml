@@ -15,4 +15,20 @@
         android:id="@+id/textView"
         android:text="" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TestButton"
+        android:id="@+id/testButton"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/testText"
+        android:layout_marginStart="73dp"
+        android:layout_marginBottom="73dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/testText"
+        android:layout_alignBottom="@+id/testButton" />
+
 </RelativeLayout>
